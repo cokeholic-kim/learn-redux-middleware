@@ -6,10 +6,14 @@ import reportWebVitals from './reportWebVitals';
 import { applyMiddleware, legacy_createStore as createStore } from 'redux';
 import rootReducer from './modules';
 import { Provider } from 'react-redux';
-import myLogger from './middlewares/myLogger';
+// import myLogger from './middlewares/myLogger';
 import logger from 'redux-logger';
+import ReduxThunk from 'redux-thunk';
+
+
 //스토어 만들기.
-const store = createStore(rootReducer,applyMiddleware(myLogger,logger))
+const store = createStore(rootReducer,applyMiddleware(ReduxThunk,logger))
+console.log(store.getState())
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
